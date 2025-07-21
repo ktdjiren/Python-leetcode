@@ -12,25 +12,23 @@ class Solution:
 
         # find with path compression
         def find(x):
-            if parent[x] == x:
-                return x
-            
-            parent[x] = find(parent[x])
+            if parent[x] != x:
+                parent[x] = find([parent[x])
             return parent[x]
         
         # union by rank
         def union(x, y):
             root_x, root_y = find(x), find(y)
-            if rank[root_x] > rank[root_y]:
+            if rank[root_y] < rank[root_x]:
                 parent[root_y] = root_x
             elif rank[root_x] < rank[root_y]:
                 parent[root_x] = root_y
             else:
-                parent[root_x] = root_y
-                rank[root_y] += 1
+                parent[root_y] = root_x
+                rank[root_x] += 1
         
         # Krukal's alorithm to greedily add edges
-        connected_nodes = set()
+        # connected_nodes = set()
         num_edges = 0
         total_cost = 0
         for x, y, cost in connections:
